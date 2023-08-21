@@ -9,7 +9,7 @@ public class MainPage extends BasePage {
     private WebElement buttonCostMenuItem;
 
     @FindBy(xpath = "//div[@id='popup_info']//i[contains(@class,'close btn_x')]")
-    private WebElement closePopUpButton;
+    static WebElement closePopUpButton;
 
     public MainPage() {
         PageFactory.initElements(getDriver(), this);
@@ -19,6 +19,7 @@ public class MainPage extends BasePage {
         getDriver().get("https://novaposhta.ua/");
         closePopUpButton.click();
     }
+
 
     public void clickOnTheDeliveryPriceMenuItem() {
         buttonCostMenuItem.click();

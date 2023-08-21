@@ -4,6 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+import static pages.MainPage.closePopUpButton;
 
 public class CalculateDeliveryPage extends BasePage {
 
@@ -29,6 +35,9 @@ public class CalculateDeliveryPage extends BasePage {
     @FindBy(xpath = "//input[@name='DeliveryForm[optionsSeat][1][volumetricHeight]']")
     private WebElement inputHeight;
 
+    @FindBy(xpath = "//h3[contains(text(),'Разом')]")
+    private WebElement fieldTogether;
+
     public CalculateDeliveryPage() {
         PageFactory.initElements(getDriver(), this);
     }
@@ -53,6 +62,7 @@ public class CalculateDeliveryPage extends BasePage {
 
     public void clickButtonCalculateTheCost() {
         buttonCalculateTheCost.click();
+        buttonCalculateTheCost.click();
     }
 
     public String isInputHighlightedRedAnnouncedPrice() {
@@ -74,4 +84,29 @@ public class CalculateDeliveryPage extends BasePage {
     public String isInputHeightLightedLength() {
         return inputHeight.getCssValue("border").substring(12);
     }
+
+    public void setInputAnnouncedPriceAs(String value) {
+        inputAnnouncedPrice.sendKeys(value);
+    }
+
+    public void setInputWeight(String value) {
+        inputWeight.sendKeys(value);
+    }
+
+    public void setInputLength(String value) {
+        inputLength.sendKeys(value);
+    }
+
+    public void setInputWidth(String value) {
+        inputWidth.sendKeys(value);
+    }
+
+    public void setInputHeight(String value) {
+        inputHeight.sendKeys(value);
+    }
+
+    public String getFieldTogether() {
+        return fieldTogether.getText().substring(7, 27);
+    }
+
 }

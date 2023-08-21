@@ -12,4 +12,5 @@ public class BasePage {
     public static void setDriver(WebDriver driver) {
         BasePage.driver = driver;
     }
+
 }
